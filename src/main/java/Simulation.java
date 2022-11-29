@@ -11,7 +11,7 @@ public class Simulation {
         int max = 20000;
         int min = 10000;
         int r = (int)(Math.random() * (max - min)) + min;
-        return (r % 15000 + 4000);
+        return (r % 15000 + 4501);
     }
 
 
@@ -65,6 +65,7 @@ public class Simulation {
                 printString(getHeader());
             }
         }
+        status = vehicle.getStatus(burnInterval);
         printString(vehicle.checkFinalStatus());
         if (status != null) {
             return status.getStatus();
@@ -76,6 +77,9 @@ public class Simulation {
         // create a new Simulation object with a random starting altitude
         // create a new BurnInputStream
         // pass the new BurnInputStream to the runSimulation method
+        Simulation game = new Simulation(new Vehicle(Simulation.randomaltitude()));
+        BurnStream burnSource = new BurnInputStream();
+        game.runSimulation(burnSource);
     }
 
 }
